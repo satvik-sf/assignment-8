@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS + PG SQL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    
+    <!-- <div class="container" id = "showData">
+        <div class = "center">
+        
+            <input type="button" id="loadDataBtn" class="btn btn-danger" onclick="init()" value="Load Data" />
+            
+            <p class="center" id="time" class=""> </p>
+            
+        </div>
+    </div> -->
+    <!-- <%= users %> -->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Costumer Website</th>
+            <th scope="col">Role ID</th>
+            <!-- <th scope="col">Edit</th>
+            <th scope="col">Delete</th> -->
+          </tr>
+        </thead>
+        <tbody>
+            <%users.forEach(function(user){ %>
+            
+            <tr id="<%=user.phone%>">
+                
+                <td> <%=user.first_name%></td>
+                <td> <%=user.last_name%></td>
+                <td> <%=user.email%></td>
+                <td> <%=user.address%></td>
+                <td> <%=user.phone%></td>
+                <td> <%=user.costumer_web%></td>
+                <td> <%=user.role_id%></td>
+                
+                <td>
+                        <button class = " btn btn-secondary edit_button" data-id ="<%=user.phone%>" id="edit_button_<%=user.phone%>">
+                            <i class="fa fa-edit" ></i>
+                        </button>
+                </td>
+
+                <td>
+                        <button class = " btn btn-secondary btn-danger delete_button" data-id ="<%=user.phone%>" id="delete_button_<%=user.phone%>" type="submit">
+                            <i class="fa fa-trash-o" ></i>
+                        </button>
+                </td>
+                <td id="save_button_<%=user.phone%>" style="display: none">
+                        <button class = "btn btn-secondary save_button" data-id ="<%=user.phone%>" >
+                            <i class="fa fa-save"></i>
+                        </button>
+                </td>
+
+                <td id="cancel_button_<%=user.phone%>" style="display: none">
+                        <button class = "btn btn-secondary cancel_button" data-id ="<%=user.phone%>">Cancel
+                        </button>
+                </td>
+            
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+</body>
+
+<!-- <script src="app.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="main.js"></script>
+<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
+</html>

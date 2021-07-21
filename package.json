@@ -1,0 +1,33 @@
+{
+  "name": "a-8",
+  "version": "1.0.0",
+  "description": "Integrate Postgres SQL",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jquery": "^3.5.6",
+    "@types/node": "^16.3.3",
+    "@types/pg": "^8.6.1",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satvik-sf/assignment-8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satvik-sf/assignment-8/issues"
+  },
+  "homepage": "https://github.com/satvik-sf/assignment-8#readme"
+}
