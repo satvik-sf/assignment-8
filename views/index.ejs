@@ -34,6 +34,7 @@
             <th scope="col">Address</th>
             <th scope="col">Phone</th>
             <th scope="col">Costumer Website</th>
+            <th scope="col">Role ID</th>
             <!-- <th scope="col">Edit</th>
             <th scope="col">Delete</th> -->
           </tr>
@@ -41,21 +42,36 @@
         <tbody>
             <%users.forEach(function(user){ %>
             
-                <tr id="<%=user.phone%>">
+            <tr id="<%=user.phone%>">
+                
                 <td> <%=user.first_name%></td>
                 <td> <%=user.last_name%></td>
                 <td> <%=user.email%></td>
                 <td> <%=user.address%></td>
                 <td> <%=user.phone%></td>
                 <td> <%=user.costumer_web%></td>
+                <td> <%=user.role_id%></td>
                 
                 <td>
-                    <form style="display: inline" method="POST" action="/delete/<%=user.phone%>">
-                        <button id="delete_button" type="submit">
-                            <i class="fa fa-trash-o" style="font-size:28px;color:red"></i>
-                        
+                        <button class = " btn btn-secondary edit_button" data-id ="<%=user.phone%>" id="edit_button_<%=user.phone%>">
+                            <i class="fa fa-edit" ></i>
                         </button>
-                    </form>
+                </td>
+
+                <td>
+                        <button class = " btn btn-secondary btn-danger delete_button" data-id ="<%=user.phone%>" id="delete_button_<%=user.phone%>" type="submit">
+                            <i class="fa fa-trash-o" ></i>
+                        </button>
+                </td>
+                <td id="save_button_<%=user.phone%>" style="display: none">
+                        <button class = "btn btn-secondary save_button" data-id ="<%=user.phone%>" >
+                            <i class="fa fa-save"></i>
+                        </button>
+                </td>
+
+                <td id="cancel_button_<%=user.phone%>" style="display: none">
+                        <button class = "btn btn-secondary cancel_button" data-id ="<%=user.phone%>">Cancel
+                        </button>
                 </td>
             
             </tr>
@@ -65,8 +81,10 @@
     
 </body>
 
-<script src="app.js"></script>
+<!-- <script src="app.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="main.js"></script>
 <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 
 </html>

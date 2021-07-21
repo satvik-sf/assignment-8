@@ -19,7 +19,7 @@ router.get("/", function (req, res) {
         if (err) {
             return console.error('error running query', err);
         }
-        console.log(result.rows);
+        // console.log(result.rows);
         res.render('index', { users: result.rows });
     });
 });
@@ -38,14 +38,16 @@ router.post("/new", function (req, res) {
 });
 router.post("/update/:phone", function (req, res) {
     var phone = req.params.phone;
-    var query = "UPDATE users SET \"first_name\"='" + req.body.first_name + "', \"last_name\"='" + req.body.last_name + "', \"phone\"='" + req.body.phone + "', email='" + req.body.email + "', address='" + req.body.address + "', role_id = '" + req.body.role_id + "' , costumer_web ='" + req.body.costumer_web + "' WHERE phone = '" + phone + "'";
+    console.log("update route");
+    console.log(req.body, phone);
+    var query = "UPDATE users SET \"first_name\"='" + req.body.first_name + "', \"last_name\"='" + req.body.last_name + "', \"phone\"='" + req.body.phone + "', email='" + req.body.email + "', address='" + req.body.address + "', role_id = " + Number.parseInt(req.body.role_id) + " , costumer_web ='" + req.body.costumer_web + "' WHERE phone = '" + phone + "'";
     console.log(query);
     pool.query(query, function (err, result) {
         if (err) {
             throw err;
         }
         res.redirect("/");
-        // res.send(result);
+        console.log("success");
     });
 });
 router.post("/delete/:phone", function (req, res) {
