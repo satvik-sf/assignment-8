@@ -125,7 +125,7 @@ function delUser(idx) {
 }
 function saveUser(idx, cells) {
     console.log(cells[4].innerHTML);
-    var r;
+    var r = Role.ADMIN;
     var x = cells[4].innerHTML;
     if (x === 'ADMIN')
         r = Role.ADMIN;

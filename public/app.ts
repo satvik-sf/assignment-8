@@ -1,4 +1,3 @@
-
 function init(){
     setUpTime();
     showUsers();
@@ -129,7 +128,7 @@ function showUsers(){
     }
 
     let container = document.getElementById("showData")!;
-    document.getElementById("loadDataBtn").style.display = "none";
+    document.getElementById("loadDataBtn")!.style.display = "none";
     container.appendChild(table);
 }
 
@@ -156,7 +155,7 @@ function delUser(idx: number){
 
 function saveUser(idx: number, cells: Array<HTMLElement>){
     console.log(cells[4].innerHTML);
-    let r: Role;
+    let r: Role = Role.ADMIN;
     let x: string = cells[4].innerHTML;
     if(x === 'ADMIN')r = Role.ADMIN;
     if(x === 'SUPERADMIN')r = Role.SUPERADMIN;

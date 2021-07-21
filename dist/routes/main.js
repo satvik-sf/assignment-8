@@ -20,7 +20,7 @@ router.get("/", function (req, res) {
             return console.error('error running query', err);
         }
         console.log(result.rows);
-        res.render('index', { recipes: result.rows });
+        res.render('index', { users: result.rows });
     });
 });
 router.post("/new", function (req, res) {
@@ -36,7 +36,7 @@ router.post("/new", function (req, res) {
         // res.send(result);
     });
 });
-router.patch("/update/:phone", function (req, res) {
+router.post("/update/:phone", function (req, res) {
     var phone = req.params.phone;
     var query = "UPDATE users SET \"first_name\"='" + req.body.first_name + "', \"last_name\"='" + req.body.last_name + "', \"phone\"='" + req.body.phone + "', email='" + req.body.email + "', address='" + req.body.address + "', role_id = '" + req.body.role_id + "' , costumer_web ='" + req.body.costumer_web + "' WHERE phone = '" + phone + "'";
     console.log(query);
@@ -48,7 +48,7 @@ router.patch("/update/:phone", function (req, res) {
         // res.send(result);
     });
 });
-router.delete("/delete/:phone", function (req, res) {
+router.post("/delete/:phone", function (req, res) {
     var query = "DELETE from users where phone= '" + req.params.phone + "'";
     pool.query(query, function (error, result) {
         if (error) {
