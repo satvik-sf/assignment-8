@@ -24,28 +24,38 @@ router.get("/", function (req, res) {
     });
 });
 router.post("/new", function (req, res) {
-    var query = "INSERT INTO users(\"first_name\", \"last_name\", \"phone\", \"email\", \"address\", \"role_id\", \"costumer_web\") VALUES( '" + req.body.first_name + "' , '" + req.body.last_name + "' ,'" + req.body.phone + "' , '" + req.body.email + "', '" + req.body.address + "' , '" + req.body.role_id + "' , '" + req.body.customer_web + "' )";
+    var query = "INSERT INTO users(\"first_name\", \"last_name\", \"phone\", \"email\", \"address\", \"role_id\", \"costumer_web\") VALUES( '" + req.body.first_name + "' , '" + req.body.last_name + "' ,'" + req.body.phone + "' , '" + req.body.email + "', '" + req.body.address + "' , '" + req.body.role_id + "' , '" + req.body.costumer_web + "' )";
     // console.log(req.body);
     // console.log(`Hi, ${req.body.first_name}`);
-    console.log(req.body.first_name + ", " + req.body.last_name + "," + req.body.phone + ", " + req.body.address + ", " + req.body.role_id + ", " + req.body.customer_web);
+    // console.log(`${req.body.first_name}, ${req.body.last_name},${req.body.phone}, ${req.body.address}, ${req.body.role_id}, ${req.body.customer_web}`);
     pool.query(query, function (err, result) {
         if (err) {
             throw err;
         }
-        res.send(result);
+        res.redirect("/");
+        // res.send(result);
     });
 });
-router.patch("/update/:id", function (req, res) {
+router.patch("/update/:phone", function (req, res) {
+    var phone = req.params.phone;
+    var query = "UPDATE users SET \"first_name\"='" + req.body.first_name + "', \"last_name\"='" + req.body.last_name + "', \"phone\"='" + req.body.phone + "', email='" + req.body.email + "', address='" + req.body.address + "', role_id = '" + req.body.role_id + "' , costumer_web ='" + req.body.costumer_web + "' WHERE phone = '" + phone + "'";
+    console.log(query);
+    pool.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        res.redirect("/");
+        // res.send(result);
+    });
 });
 router.delete("/delete/:phone", function (req, res) {
-    // client.connect();
-    // client.query('DELETE FROM users WHERE phone = ${req.params.phone}', function(err, result) {
-    //     if(err) {
-    //      return console.error('error running query', err);
-    //     }
-    //     console.log(result.rows);
-    //     client.end();
-    //     res.redirect("/");
-    // }); 
+    var query = "DELETE from users where phone= '" + req.params.phone + "'";
+    pool.query(query, function (error, result) {
+        if (error) {
+            throw error;
+        }
+        console.log(query, result);
+        res.redirect("/");
+    });
 });
 exports.default = router;
